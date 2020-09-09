@@ -2296,6 +2296,10 @@ interactive_loop(struct sftp_conn *conn, char *file1, char *file2)
 	return (err >= 0 ? 0 : -1);
 }
 
+#ifdef __serenity__
+#define USE_PIPES 1
+#endif
+
 static void
 connect_to_server(char *path, char **args, int *in, int *out)
 {
