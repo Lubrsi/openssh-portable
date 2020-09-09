@@ -51,6 +51,10 @@
 #include "sftp.h"
 #include "sftp-common.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 char *sftp_realpath(const char *, char *); /* sftp-realpath.c */
 
 /* Our verbosity */

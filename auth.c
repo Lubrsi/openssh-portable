@@ -77,6 +77,10 @@
 #include "compat.h"
 #include "channels.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 /* import */
 extern ServerOptions options;
 extern struct include_list includes;

@@ -123,6 +123,10 @@
 #include "progressmeter.h"
 #include "utf8.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 extern char *__progname;
 
 #define COPY_BUFLEN	16384

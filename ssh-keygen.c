@@ -66,6 +66,10 @@
 #include "ssh-sk.h"
 #include "sk-api.h" /* XXX for SSH_SK_USER_PRESENCE_REQD; remove */
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 #ifdef WITH_OPENSSL
 # define DEFAULT_KEY_TYPE_NAME "rsa"
 #else

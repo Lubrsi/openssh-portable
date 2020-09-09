@@ -70,6 +70,10 @@
 #include "myproposal.h"
 #include "digest.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 /* Format of the configuration file:
 
    # Configuration data is parsed as follows:

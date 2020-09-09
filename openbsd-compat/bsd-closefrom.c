@@ -50,6 +50,10 @@
 # include <libproc.h>
 #endif
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 #ifndef OPEN_MAX
 # define OPEN_MAX	256
 #endif

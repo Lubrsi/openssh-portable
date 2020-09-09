@@ -44,6 +44,10 @@
 # define SYMLOOP_MAX 32
 #endif
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 /* XXX rewrite sftp-server to use POSIX realpath and remove this hack */
 
 char *sftp_realpath(const char *path, char *resolved);

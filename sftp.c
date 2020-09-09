@@ -70,6 +70,10 @@ typedef void EditLine;
 #include "sftp-common.h"
 #include "sftp-client.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 #define DEFAULT_COPY_BUFLEN	32768	/* Size of buffer for up/download */
 #define DEFAULT_NUM_REQUESTS	64	/* # concurrent outstanding requests */
 

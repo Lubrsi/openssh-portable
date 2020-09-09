@@ -113,6 +113,10 @@
 #include "ssh-pkcs11.h"
 #endif
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 extern char *__progname;
 
 /* Saves a copy of argv for setproctitle emulation */

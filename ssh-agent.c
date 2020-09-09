@@ -92,6 +92,10 @@
 #include "ssh-pkcs11.h"
 #include "sk-api.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 #ifndef DEFAULT_PROVIDER_WHITELIST
 # define DEFAULT_PROVIDER_WHITELIST "/usr/lib*/*,/usr/local/lib*/*"
 #endif

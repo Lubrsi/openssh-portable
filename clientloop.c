@@ -112,6 +112,10 @@
 #include "ssherr.h"
 #include "hostfile.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 /* import options */
 extern Options options;
 

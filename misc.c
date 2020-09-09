@@ -77,6 +77,10 @@
 #include "ssherr.h"
 #include "platform.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 /* remove newline at end of string */
 char *
 chop(char *s)

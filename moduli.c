@@ -62,6 +62,10 @@
 
 #include "openbsd-compat/openssl-compat.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 /*
  * File output defines
  */

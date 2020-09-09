@@ -72,6 +72,10 @@
 #include "myproposal.h"
 #include "digest.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 static void add_listen_addr(ServerOptions *, const char *,
     const char *, int);
 static void add_one_listen_addr(ServerOptions *, const char *,

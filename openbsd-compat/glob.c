@@ -76,6 +76,10 @@
 #include <string.h>
 #include <unistd.h>
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 #if !defined(HAVE_GLOB) || !defined(GLOB_HAS_ALTDIRFUNC) || \
     !defined(GLOB_HAS_GL_MATCHC) || !defined(GLOB_HAS_GL_STATV) || \
     !defined(HAVE_DECL_GLOB_NOMATCH) || HAVE_DECL_GLOB_NOMATCH == 0 || \

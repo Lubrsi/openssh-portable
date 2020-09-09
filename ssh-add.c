@@ -68,6 +68,10 @@
 #include "digest.h"
 #include "ssh-sk.h"
 
+#ifdef __serenity__
+#include "serenity_limits.h"
+#endif
+
 /* argv0 */
 extern char *__progname;
 
