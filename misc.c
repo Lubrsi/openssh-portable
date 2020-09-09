@@ -50,7 +50,9 @@
 #include <unistd.h>
 
 #include <netinet/in.h>
+#ifndef __serenity__
 #include <netinet/in_systm.h>
+#endif
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 #include <arpa/inet.h>

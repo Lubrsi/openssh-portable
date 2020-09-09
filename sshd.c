@@ -1231,6 +1231,8 @@ server_accept_loop(int *sock_in, int *sock_out, int *newsock, int *config_s)
 				continue;
 			}
 
+// FIXME: socketpair is seemingly required for SSHD to work, but doesn't current exist.
+#ifndef __serenity__
 			if (rexec_flag && socketpair(AF_UNIX,
 			    SOCK_STREAM, 0, config_s) == -1) {
 				error("reexec socketpair: %s",
@@ -1240,6 +1242,7 @@ server_accept_loop(int *sock_in, int *sock_out, int *newsock, int *config_s)
 				close(startup_p[1]);
 				continue;
 			}
+#endif
 
 			for (j = 0; j < options.max_startups; j++)
 				if (startup_pipes[j] == -1) {

@@ -120,7 +120,7 @@ atomiciov6(ssize_t (*f) (int, const struct iovec *, int), int fd,
 	memcpy(iov, _iov, (size_t)iovcnt * sizeof(*_iov));
 
 	pfd.fd = fd;
-#ifndef BROKEN_READV_COMPARISON
+#if !defined(BROKEN_READV_COMPARISON) && !defined(__serenity__)
 	pfd.events = f == readv ? POLLIN : POLLOUT;
 #else
 	pfd.events = POLLIN|POLLOUT;

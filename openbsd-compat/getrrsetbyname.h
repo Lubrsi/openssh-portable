@@ -45,6 +45,8 @@
  * WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef __serenity__
+
 #ifndef _GETRRSETBYNAME_H
 #define _GETRRSETBYNAME_H
 
@@ -108,3 +110,5 @@ void		freerrset(struct rrsetinfo *);
 #endif /* !defined(HAVE_GETRRSETBYNAME) */
 
 #endif /* _GETRRSETBYNAME_H */
+
+#endif

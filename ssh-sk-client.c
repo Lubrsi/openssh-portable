@@ -15,6 +15,8 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef __serenity__
+
 #include "includes.h"
 
 #include <sys/types.h>
@@ -447,3 +449,5 @@ sshsk_load_resident(const char *provider_path, const char *device,
 	errno = oerrno;
 	return r;
 }
+
+#endif

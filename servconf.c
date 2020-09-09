@@ -20,7 +20,9 @@
 #endif
 
 #include <netinet/in.h>
+#ifndef __serenity__
 #include <netinet/in_systm.h>
+#endif
 #include <netinet/ip.h>
 #ifdef HAVE_NET_ROUTE_H
 #include <net/route.h>

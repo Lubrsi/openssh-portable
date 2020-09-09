@@ -21,7 +21,9 @@
 
 #include <sys/types.h>
 #include <sys/ioctl.h>
+#ifndef __serenity__
 #include <sys/syscall.h>
+#endif
 #include <sys/socket.h>
 #include <sys/wait.h>
 

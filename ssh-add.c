@@ -535,6 +535,7 @@ lock_agent(int agent_fd, int lock)
 	return (ret);
 }
 
+#ifndef __serenity__
 static int
 load_resident_keys(int agent_fd, const char *skprovider, int qflag)
 {
@@ -583,6 +584,7 @@ load_resident_keys(int agent_fd, const char *skprovider, int qflag)
 		return SSH_ERR_KEY_NOT_FOUND;
 	return ok == 1 ? 0 : ok;
 }
+#endif
 
 static int
 do_file(int agent_fd, int deleting, int key_only, char *file, int qflag,
@@ -775,6 +777,7 @@ main(int argc, char **argv)
 			ret = 1;
 		goto done;
 	}
+	#ifndef __serenity__
 	if (do_download) {
 		if (skprovider == NULL)
 			fatal("Cannot download keys without provider");
@@ -782,6 +785,7 @@ main(int argc, char **argv)
 			ret = 1;
 		goto done;
 	}
+	#endif
 	if (argc == 0) {
 		char buf[PATH_MAX];
 		struct passwd *pw;

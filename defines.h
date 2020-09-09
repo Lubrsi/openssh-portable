@@ -55,8 +55,13 @@ enum
 /*
  * Definitions for IP type of service (ip_tos)
  */
+#ifndef __serenity__
 #include <netinet/in_systm.h>
+#endif
 #include <netinet/ip.h>
+#ifdef __serenity__
+#include <arpa/inet.h>
+#endif
 #ifndef IPTOS_LOWDELAY
 # define IPTOS_LOWDELAY          0x10
 # define IPTOS_THROUGHPUT        0x08

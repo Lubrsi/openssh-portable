@@ -45,6 +45,8 @@
 
 /* OPENBSD ORIGINAL: lib/libc/net/getrrsetbyname.c */
 
+#ifndef __serenity__
+
 #include "includes.h"
 
 #if !defined (HAVE_GETRRSETBYNAME) && !defined (HAVE_LDNS)
@@ -608,3 +610,5 @@ count_dns_rr(struct dns_rr *p, u_int16_t class, u_int16_t type)
 }
 
 #endif /*  !defined (HAVE_GETRRSETBYNAME) && !defined (HAVE_LDNS) */
+
+#endif

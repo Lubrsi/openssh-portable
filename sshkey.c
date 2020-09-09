@@ -42,7 +42,9 @@
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
+#ifndef __serenity__
 #include <resolv.h>
+#endif
 #include <time.h>
 #ifdef HAVE_UTIL_H
 #include <util.h>
@@ -2759,6 +2761,7 @@ sshkey_sign(struct sshkey *key,
 	case KEY_ED25519_CERT:
 		r = ssh_ed25519_sign(key, sigp, lenp, data, datalen, compat);
 		break;
+		#ifndef __serenity__
 	case KEY_ED25519_SK:
 	case KEY_ED25519_SK_CERT:
 	case KEY_ECDSA_SK_CERT:
@@ -2766,6 +2769,7 @@ sshkey_sign(struct sshkey *key,
 		r = sshsk_sign(sk_provider, key, sigp, lenp, data,
 		    datalen, compat, /* XXX PIN */ NULL);
 		break;
+		#endif
 #ifdef WITH_XMSS
 	case KEY_XMSS:
 	case KEY_XMSS_CERT:

@@ -311,7 +311,9 @@ keyprint_one(const char *host, struct sshkey *key)
 	found_one = 1;
 
 	if (print_sshfp) {
+#ifndef __serenity__
 		export_dns_rr(host, key, stdout, 0);
+#endif
 		return;
 	}
 

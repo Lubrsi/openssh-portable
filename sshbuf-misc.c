@@ -28,7 +28,9 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
+#ifndef __serenity__
 #include <resolv.h>
+#endif
 #include <ctype.h>
 
 #include "ssherr.h"

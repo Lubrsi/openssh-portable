@@ -43,6 +43,8 @@
  * WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef __serenity__
+
 #include "includes.h"
 
 #if !defined (HAVE_GETRRSETBYNAME) && defined (HAVE_LDNS)
@@ -282,3 +284,5 @@ freerrset(struct rrsetinfo *rrset)
 
 
 #endif /* !defined (HAVE_GETRRSETBYNAME) && defined (HAVE_LDNS) */
+
+#endif

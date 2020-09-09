@@ -460,7 +460,7 @@ login_write(struct logininfo *li)
 #ifdef USE_WTMP
 	wtmp_write_entry(li);
 #endif
-#ifdef USE_UTMPX
+#ifndef __serenity__
 	utmpx_write_entry(li);
 #endif
 #ifdef USE_WTMPX
@@ -493,7 +493,7 @@ login_utmp_only(struct logininfo *li)
 # ifdef USE_WTMP
 	wtmp_write_entry(li);
 # endif
-# ifdef USE_UTMPX
+# ifndef __serenity__
 	utmpx_write_entry(li);
 # endif
 # ifdef USE_WTMPX
@@ -724,7 +724,7 @@ construct_utmp(struct logininfo *li,
  ** variations.
  **/
 
-#if defined(USE_UTMPX) || defined (USE_WTMPX)
+#if !defined(__serenity__)
 /* build the utmpx structure */
 void
 set_utmpx_time(struct logininfo *li, struct utmpx *utx)
@@ -983,7 +983,7 @@ utmp_write_entry(struct logininfo *li)
  **/
 
 /* not much point if we don't want utmpx entries */
-#ifdef USE_UTMPX
+#ifndef __serenity__
 
 /* if we have the wherewithall, use pututxline etc. */
 # if !defined(DISABLE_PUTUTXLINE) && defined(HAVE_SETUTXENT) && \

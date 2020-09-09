@@ -1752,8 +1752,10 @@ monitor_openfds(struct monitor *mon, int do_logfds)
 	int on = 1;
 #endif
 
+#ifndef __serenity__
 	if (socketpair(AF_UNIX, SOCK_STREAM, 0, pair) == -1)
 		fatal("%s: socketpair: %s", __func__, strerror(errno));
+#endif
 #ifdef SO_ZEROIZE
 	if (setsockopt(pair[0], SOL_SOCKET, SO_ZEROIZE, &on, sizeof(on)) == -1)
 		error("setsockopt SO_ZEROIZE(0): %.100s", strerror(errno));

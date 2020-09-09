@@ -21,7 +21,9 @@
 #include <sys/un.h>
 
 #include <netinet/in.h>
+#ifndef __serenity__
 #include <netinet/in_systm.h>
+#endif
 #include <netinet/ip.h>
 #include <arpa/inet.h>
 
@@ -1064,11 +1066,12 @@ parse_time:
 	case oCheckHostIP:
 		intptr = &options->check_host_ip;
 		goto parse_flag;
-
+#ifndef __serenity__
 	case oVerifyHostKeyDNS:
 		intptr = &options->verify_host_key_dns;
 		multistate_ptr = multistate_yesnoask;
 		goto parse_multistate;
+	#endif
 
 	case oStrictHostKeyChecking:
 		intptr = &options->strict_host_key_checking;

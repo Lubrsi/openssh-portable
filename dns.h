@@ -25,6 +25,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef __serenity__
+
 #ifndef DNS_H
 #define DNS_H
 
@@ -56,3 +58,5 @@ int	verify_host_key_dns(const char *, struct sockaddr *,
 int	export_dns_rr(const char *, struct sshkey *, FILE *, int);
 
 #endif /* DNS_H */
+
+#endif

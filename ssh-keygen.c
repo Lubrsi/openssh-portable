@@ -1464,6 +1464,7 @@ do_change_passphrase(struct passwd *pw)
 	exit(0);
 }
 
+#ifndef __serenity__
 /*
  * Print the SSHFP RR.
  */
@@ -1491,6 +1492,7 @@ do_print_resource_record(struct passwd *pw, char *fname, char *hname,
 	free(comment);
 	return 1;
 }
+#endif
 
 /*
  * Change the comment of a private key file.
@@ -2929,6 +2931,7 @@ skip_ssh_url_preamble(const char *s)
 	return s;
 }
 
+#ifndef __serenity__
 static int
 do_download_sk(const char *skprovider, const char *device)
 {
@@ -3026,6 +3029,7 @@ do_download_sk(const char *skprovider, const char *device)
 	free(keys);
 	return ok ? 0 : -1;
 }
+#endif
 
 static void
 usage(void)
@@ -3437,6 +3441,7 @@ main(int argc, char **argv)
 	}
 	if (pkcs11provider != NULL)
 		do_download(pw);
+#ifndef __serenity__
 	if (download_sk) {
 		for (i = 0; i < nopts; i++) {
 			if (strncasecmp(opts[i], "device=", 7) == 0) {
@@ -3448,6 +3453,7 @@ main(int argc, char **argv)
 		}
 		return do_download_sk(sk_provider, sk_device);
 	}
+#endif
 	if (print_fingerprint || print_bubblebabble)
 		do_fingerprint(pw);
 	if (change_passphrase)
@@ -3465,6 +3471,8 @@ main(int argc, char **argv)
 #endif /* WITH_OPENSSL */
 	if (print_public)
 		do_print_public(pw);
+
+#ifndef __serenity__
 	if (rr_hostname != NULL) {
 		unsigned int n = 0;
 
@@ -3496,6 +3504,7 @@ main(int argc, char **argv)
 			exit(0);
 		}
 	}
+#endif
 
 	if (do_gen_candidates || do_screen_candidates) {
 		if (argc <= 0)
@@ -3527,6 +3536,7 @@ main(int argc, char **argv)
 		printf("Generating public/private %s key pair.\n",
 		    key_type_name);
 	switch (type) {
+#ifndef __serenity__
 	case KEY_ECDSA_SK:
 	case KEY_ED25519_SK:
 		for (i = 0; i < nopts; i++) {
@@ -3593,6 +3603,7 @@ main(int argc, char **argv)
 			passphrase = NULL;
 		}
 		break;
+#endif
 	default:
 		if ((r = sshkey_generate(type, bits, &private)) != 0)
 			fatal("sshkey_generate failed");

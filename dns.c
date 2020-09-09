@@ -25,6 +25,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef __serenity__
+
 #include "includes.h"
 
 #include <sys/types.h>
@@ -353,3 +355,5 @@ export_dns_rr(const char *hostname, struct sshkey *key, FILE *f, int generic)
 
 	return success;
 }
+
+#endif

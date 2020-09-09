@@ -110,7 +110,9 @@
 #endif
 
 #include <netinet/in.h>
+#ifndef __serenity__
 #include <netinet/in_systm.h> /* For typedefs */
+#endif
 #ifdef HAVE_RPC_TYPES_H
 # include <rpc/types.h> /* For INADDR_LOOPBACK */
 #endif

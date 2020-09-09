@@ -362,7 +362,7 @@ pledge(const char *promises, const char *paths[])
 }
 #endif
 
-#ifndef HAVE_MBTOWC
+#if !defined(HAVE_MBTOWC) && !defined(__serenity__)
 /* a mbtowc that only supports ASCII */
 int
 mbtowc(wchar_t *pwc, const char *s, size_t n)

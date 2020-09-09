@@ -241,6 +241,7 @@ wrap_key(struct sshkey *k)
 		fatal("%s: unknown key type", __func__);
 }
 
+#ifndef __serenity__
 static int
 pkcs11_start_helper_methods(void)
 {
@@ -310,6 +311,7 @@ pkcs11_start_helper(void)
 	fd = pair[0];
 	return (0);
 }
+#endif
 
 int
 pkcs11_add_provider(char *name, char *pin, struct sshkey ***keysp,
@@ -323,7 +325,11 @@ pkcs11_add_provider(char *name, char *pin, struct sshkey ***keysp,
 	u_int nkeys, i;
 	struct sshbuf *msg;
 
-	if (fd < 0 && pkcs11_start_helper() < 0)
+	if (fd < 0 
+#ifndef __serenity__
+		&& pkcs11_start_helper() < 0
+#endif
+		)
 		return (-1);
 
 	if ((msg = sshbuf_new()) == NULL)

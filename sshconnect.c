@@ -120,6 +120,7 @@ stderr_null(void)
 		close(devnull);
 }
 
+#ifndef __serenity__
 /*
  * Connect to the given ssh server using a proxy command that passes a
  * a connected fd back to us.
@@ -202,6 +203,7 @@ ssh_proxy_fdpass_connect(struct ssh *ssh, const char *host,
 
 	return 0;
 }
+#endif
 
 /*
  * Connect to the given ssh server using a proxy command.
@@ -566,10 +568,13 @@ ssh_connect(struct ssh *ssh, const char *host, const char *host_arg,
 		if ((ssh_packet_set_connection(ssh, in, out)) == NULL)
 			return -1; /* ssh_packet_set_connection logs error */
 		return 0;
-	} else if (options.proxy_use_fdpass) {
+	} 
+	#ifndef __serenity__
+	else if (options.proxy_use_fdpass) {
 		return ssh_proxy_fdpass_connect(ssh, host, host_arg, port,
 		    options.proxy_command);
 	}
+	#endif
 	return ssh_proxy_connect(ssh, host, host_arg, port,
 	    options.proxy_command);
 }
@@ -1218,7 +1223,7 @@ verify_host_key(char *host, struct sockaddr *hostaddr, struct sshkey *host_key)
 			goto out;
 		}
 	}
-
+#ifndef __serenity__
 	if (options.verify_host_key_dns) {
 		/*
 		 * XXX certs are not yet supported for DNS, so downgrade
@@ -1247,6 +1252,7 @@ verify_host_key(char *host, struct sockaddr *hostaddr, struct sshkey *host_key)
 			}
 		}
 	}
+#endif
 	r = check_host_key(host, hostaddr, options.port, host_key, RDRW,
 	    options.user_hostfiles, options.num_user_hostfiles,
 	    options.system_hostfiles, options.num_system_hostfiles);
