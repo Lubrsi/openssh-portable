@@ -40,6 +40,10 @@
 #include <errno.h>
 #include <fcntl.h>
 
+#ifdef __serenity__
+#include <stdio.h>
+#endif
+
 int
 flock(int fd, int op)
 {
